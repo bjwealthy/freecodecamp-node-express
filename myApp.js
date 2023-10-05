@@ -20,9 +20,9 @@ app.get('/json', (req, res) => {
     
     const ourSecret = process.env.MESSAGE_STYLE
 
-    if(ourSecret==="uppercase"){
+    if(ourSecret===uppercase){
         res.json({"message": "HELLO JSON"})
-    }else{res.json({"message": "Hello jsonaa"})  }
+    }else{res.json({"message": "Hello json"})  }
 })
 
 
