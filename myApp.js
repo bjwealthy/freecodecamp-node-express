@@ -1,5 +1,9 @@
 let express = require('express');
 let app = express();
+const path = require("path")
+
+const dotenv = require('dotenv')
+dotenv.config({ path: './.env'})
 
 console.log("Hello World")
 
@@ -14,25 +18,19 @@ app.get('/', (req, res) => {
 
 app.use('/public', express.static(__dirname + '/public'))
 
+const secret = process.env.MESSAGE_STYLE
 
 app.get('/json', (req, res) => {
-    console.log(req.url)
     
-    const ourSecret = process.env.MESSAGE_STYLE
-
-    if(ourSecret===uppercase){
+    if(secret==="uppercase"){
         res.json({"message": "HELLO JSON"})
     }else{res.json({"message": "Hello json"})  }
 })
 
 
-// const port = 3000;
-// app.listen(port, () => {
-//   console.log(`Nodejs is listening on port ${port}...`);
-// });
-
-
-
-
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Nodejs is listening on port ${port}...`);
+});
 
  module.exports = app;
